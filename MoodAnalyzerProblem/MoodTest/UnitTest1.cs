@@ -33,5 +33,21 @@ namespace MoodTest
             // Assert
             Assert.AreEqual(expected, mood);
         }
+        [Test]
+        //[DataRow("I am in Happy Mood")]
+        //[DataRow(null)]
+        public void TestMethodAnalayzerForHappyMood()
+        {
+            ///AAA methodology
+            ///arrange
+            string message = "Im in Happy mood";
+
+            //Act
+            MoodAnalyzer analyser = new MoodAnalyzer(message);
+            string Actual = analyser.AnalyseMood();
+
+            //Assert
+            Assert.AreEqual(Actual, "HAPPY");
+        }
     }
 }
