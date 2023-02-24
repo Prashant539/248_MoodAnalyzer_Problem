@@ -19,6 +19,7 @@ namespace MoodTest
             // Assert
             Assert.AreEqual(expected, mood);
         }
+        //TC 1.2    
         [Test]
         public void HappyMood()
         {
@@ -33,6 +34,7 @@ namespace MoodTest
             // Assert
             Assert.AreEqual(expected, mood);
         }
+        //TC 2.1
         [Test]
         //[DataRow("I am in Happy Mood")]
         //[DataRow(null)]
@@ -49,5 +51,42 @@ namespace MoodTest
             //Assert
             Assert.AreEqual(Actual, "HAPPY");
         }
+        //TC 3.1
+        [Test]
+        public void TestMethodForCustomizedNullException()
+
+        {
+            string expected = "Mood should not be null";
+            try
+            {
+
+                MoodAnalyzer moodAnalyser = new MoodAnalyzer(null);
+                moodAnalyser.AnalyseMood();
+            }
+            catch (CustomException ex)
+            {
+                Assert.AreEqual(expected, ex.Message);
+            }
+
+
+        }
+        //TC 3.2
+        [Test]
+        public void TestMethodForCustomizedEmptyException()
+
+        {
+            string expected = "Mood should not be empty";
+            try
+            {
+
+                MoodAnalyzer moodAnalyser = new MoodAnalyzer(string.Empty);
+                moodAnalyser.AnalyseMood();
+            }
+            catch (CustomException ex)
+            {
+                Assert.AreEqual(expected, ex.Message);
+            }
+        }
     }
 }
+    
