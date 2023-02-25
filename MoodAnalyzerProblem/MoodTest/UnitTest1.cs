@@ -73,7 +73,6 @@ namespace MoodTest
         //TC 3.2
         [Test]
         public void TestMethodForCustomizedEmptyException()
-
         {
             string expected = "Mood should not be empty";
             try
@@ -85,6 +84,58 @@ namespace MoodTest
             catch (CustomException ex)
             {
                 Assert.AreEqual(expected, ex.Message);
+            }
+        }
+        //TC 4.1
+        [Test]
+        public void Reflection_Return_Default_Constructor()
+        {
+            MoodAnalyzer expected = new MoodAnalyzer();
+            object obj = null;
+            try
+            {
+                MoodAnalyserFactory factory = new MoodAnalyserFactory();
+                obj = factory.CreateMoodAnalyserObject("MoodAnalyserProblem2.MoodAnalyser", "MoodAnalyser");
+
+            }
+            catch (CustomException ex)
+            {
+                throw new System.Exception(ex.Message);
+            }
+        }
+        //TC 4.2
+        [Test]
+        public void Reflection_Return_Default_Constructor_No_Class_Found()
+        {
+            string expected = "Class not found";
+            object obj = null;
+            try
+            {
+                MoodAnalyserFactory factory = new MoodAnalyserFactory();
+                obj = factory.CreateMoodAnalyserObject("MoodAnalyserProblem2.MoodAnaly", "MoodAnaly");
+
+            }
+            catch (CustomException actual)
+
+            {
+                Assert.AreEqual(expected, actual.Message);
+            }
+        }
+        //TC 4.3
+        [Test]
+        public void Reflection_Return_Default_Constructor_No_Constructor_Found()
+        {
+            string expected = "Constructor not found";
+            object obj = null;
+            try
+            {
+                MoodAnalyserFactory factory = new MoodAnalyserFactory();
+                obj = factory.CreateMoodAnalyserObject("MoodAnalyserProblem2.MoodAnalyser", "MoodAnaly");
+
+            }
+            catch (CustomException actual)
+            {
+                Assert.AreEqual(expected, actual.Message);
             }
         }
     }
