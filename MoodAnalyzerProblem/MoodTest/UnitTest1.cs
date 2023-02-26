@@ -100,7 +100,7 @@ namespace MoodTest
             }
             catch (CustomException ex)
             {
-                throw new System.Exception(ex.Message);
+                throw new Exception(ex.Message);
             }
         }
         //TC 4.2
@@ -138,6 +138,7 @@ namespace MoodTest
                 Assert.AreEqual(expected, actual.Message);
             }
         }
+       
     }
 }
     
